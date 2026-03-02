@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="지금 내 번아웃 지수는?">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3a63ff"/>
+      <stop offset="100%" stop-color="#7a8dff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <text x="80" y="280" font-size="72" font-family="Pretendard, Noto Sans KR, sans-serif" fill="#ffffff" font-weight="700">지금 내 번아웃 지수는?</text>
+  <text x="80" y="360" font-size="38" font-family="Pretendard, Noto Sans KR, sans-serif" fill="#ffffff" opacity="0.95">10문항으로 확인하는 번아웃 자가 진단 테스트</text>
+</svg>

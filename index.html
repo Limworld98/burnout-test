@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>지금 내 번아웃 지수는?</title>
+    <meta
+      name="description"
+      content="직장인을 위한 10문항 번아웃 자가 진단 테스트. 지금 내 번아웃 지수를 확인해 보세요."
+    />
+    <meta property="og:url" content="/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="meta-og-title" property="og:title" content="지금 내 번아웃 지수는?" />
+    <meta
+      id="meta-og-description"
+      property="og:description"
+      content="10문항 30초. 너 몇 % 나옴?"
+    />
+    <meta id="meta-og-image" property="og:image" content="./assets/og-image.svg" />
+    <meta id="meta-twitter-title" name="twitter:title" content="지금 내 번아웃 지수는?" />
+    <meta
+      id="meta-twitter-description"
+      name="twitter:description"
+      content="10문항 30초. 너 몇 % 나옴?"
+    />
+    <meta id="meta-twitter-image" name="twitter:image" content="./assets/og-image.svg" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <h1>지금 내 번아웃 지수는?</h1>
+        <p>출근만 했는데 체력바 -30%? 웃프게 확인해보는 번아웃 테스트</p>
+      </header>
+
+      <section id="start-view" class="card view is-visible" aria-labelledby="start-title">
+        <img
+          id="landing-image"
+          class="hero-image"
+          src="/images/landing.png"
+          alt="지금 내 번아웃 지수는? 랜딩 이미지"
+        />
+        <p class="help-text">직장인 공감 10문항, 30초면 끝나요.</p>
+        <button id="start-btn" class="btn btn-primary" type="button">🔥 나 몇 %인지 보러가기</button>
+      </section>
+
+      <section id="quiz-view" class="card view" aria-labelledby="quiz-title" aria-live="polite">
+        <div class="progress-wrap" aria-label="진행률">
+          <p id="progress-text" class="progress-text">1 / 10</p>
+          <div class="progress-track" aria-hidden="true">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <h2 id="quiz-title" class="section-title">질문</h2>
+        <p id="question-text" class="question-text"></p>
+
+        <div id="quiz-mid-ad" class="ad-box ad-quiz-mid" role="complementary" aria-label="광고 영역">
+          광고 영역 (질문 중반)
+        </div>
+
+        <div class="score-options" role="radiogroup" aria-label="점수 선택">
+          <button class="btn btn-option" type="button" data-score="1">1 · 매우 아니다</button>
+          <button class="btn btn-option" type="button" data-score="2">2 · 아니다</button>
+          <button class="btn btn-option" type="button" data-score="3">3 · 보통이다</button>
+          <button class="btn btn-option" type="button" data-score="4">4 · 그렇다</button>
+          <button class="btn btn-option" type="button" data-score="5">5 · 매우 그렇다</button>
+        </div>
+      </section>
+
+      <section id="loading-view" class="card view" aria-live="polite" aria-busy="true">
+        <div class="loading-wrap">
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <p class="loading-title">점수 계산 중...</p>
+          <p class="loading-sub">오늘의 번아웃 지수를 분석하고 있어요</p>
+          <div class="loading-bar-track" aria-hidden="true">
+            <div id="loading-bar-fill" class="loading-bar-fill"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="result-view" class="card view" aria-labelledby="result-title">
+        <div class="ad-box" role="complementary" aria-label="광고 영역">
+          광고 영역 (결과 상단)
+        </div>
+
+        <h2 id="result-title" class="section-title">결과</h2>
+        <img id="result-image" class="result-image" src="" alt="결과 이미지" />
+        <p class="result-index-label">번아웃 지수</p>
+        <p id="result-index" class="result-index">0%</p>
+        <p id="result-type" class="result-type"></p>
+        <p id="result-meme" class="result-meme"></p>
+        <p id="result-desc" class="result-desc"></p>
+        <p id="share-prompt" class="share-prompt">너는 몇 %? 공유해서 비교해보자 👀</p>
+
+        <div class="share-actions">
+          <button id="share-btn" class="btn btn-secondary" type="button">공유하기</button>
+        </div>
+
+        <button id="restart-btn" class="btn btn-primary" type="button">다시 테스트하기</button>
+
+        <div class="ad-box" role="complementary" aria-label="광고 영역">
+          광고 영역 (결과 하단)
+        </div>
+      </section>
+
+      <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    </main>
+
+    <script type="module" src="./src/scripts/app.js"></script>
+  </body>
+</html>
