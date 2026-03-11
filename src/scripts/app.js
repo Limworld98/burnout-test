@@ -44,7 +44,7 @@ let isAdvancing = false;
 
 const LANDING_META = {
   title: "지금 내 번아웃 지수는?",
-  description: "10문항 30초. 너 몇 % 나옴?",
+  description: "10문항 30초. 넌 몇 % 나옴?",
   image: "/images/landing.png"
 };
 
