@@ -9,6 +9,7 @@ const views = {
 };
 
 const startBtn = document.getElementById("start-btn");
+const startShareBtn = document.getElementById("start-share-btn");
 const restartBtn = document.getElementById("restart-btn");
 const optionButtons = Array.from(document.querySelectorAll(".btn-option"));
 
@@ -35,18 +36,19 @@ const metaTwitterTitle = document.getElementById("meta-twitter-title");
 const metaTwitterDescription = document.getElementById("meta-twitter-description");
 const metaTwitterImage = document.getElementById("meta-twitter-image");
 
-let currentQuestionIndex = 0;
-let answers = [];
-let lastShareText = "";
-let lastShareUrl = window.location.href;
-let lastResultScore = null;
-let isAdvancing = false;
-
 const LANDING_META = {
   title: "지금 내 번아웃 지수는?",
   description: "10문항 30초. 넌 몇 % 나옴?",
   image: "/images/landing.png"
 };
+
+let currentQuestionIndex = 0;
+let answers = [];
+let lastShareText = "";
+let lastShareUrl = window.location.href;
+let lastShareImageUrl = LANDING_META.image;
+let lastResultScore = null;
+let isAdvancing = false;
 
 function showView(name) {
   Object.values(views).forEach((view) => view.classList.remove("is-visible"));
@@ -82,9 +84,7 @@ function setMetaTags({ title, description, image }) {
 }
 
 function getResultShareUrl(totalScore) {
-  const url = new URL(window.location.href);
-  url.searchParams.set("s", String(totalScore));
-  return url.toString();
+  return getCommonShareUrl();
 }
 
 function updateQuizMidAd() {
@@ -111,6 +111,10 @@ function getShareLandingUrl() {
   const url = new URL(window.location.href);
   url.search = "";
   return url.toString();
+}
+
+function getCommonShareUrl() {
+  return new URL("/share/common.html", window.location.origin).toString();
 }
 
 function showFeedback(message, isError = false) {
@@ -184,6 +188,7 @@ function renderResult(totalScore, updateUrl = false) {
   resultDesc.textContent = matched.description;
   lastShareUrl = shareUrl;
   lastShareText = getShareText(percent, matched.type);
+  lastShareImageUrl = resultOgImage;
   lastResultScore = totalScore;
 
   setMetaTags({
@@ -240,6 +245,9 @@ async function handleSelectScore(score, selectedButton) {
 function startQuiz() {
   currentQuestionIndex = 0;
   answers = [];
+  lastShareText = "";
+  lastShareUrl = getShareLandingUrl();
+  lastShareImageUrl = LANDING_META.image;
   lastResultScore = null;
   window.history.replaceState({}, "", window.location.pathname);
   setMetaTags(LANDING_META);
@@ -262,10 +270,10 @@ optionButtons.forEach((button) => {
 });
 
 shareBtn.addEventListener("click", async () => {
-  const shareUrl = getShareLandingUrl();
+  const shareUrl = lastShareUrl || getShareLandingUrl();
+  await copyToClipboard(shareUrl, "공유 링크를 복사했어요. SNS나 채팅에 붙여넣어 공유해 주세요.");
+
   const sharePayload = {
-    title: "지금 내 번아웃 지수는?",
-    text: lastShareText || "내 번아웃 지수 테스트 해봤어 ㅋㅋ 너는 몇 %야?",
     url: shareUrl
   };
 
@@ -279,9 +287,24 @@ shareBtn.addEventListener("click", async () => {
       }
     }
   }
-
-  await copyToClipboard(`${sharePayload.text}\n${sharePayload.url}`, "공유 기능을 열 수 없어 문구+링크를 복사했어요.");
 });
+
+if (startShareBtn) {
+  startShareBtn.addEventListener("click", async () => {
+    const shareUrl = getCommonShareUrl();
+    await copyToClipboard(shareUrl, "공유 링크를 복사했어요. SNS나 채팅에 붙여넣어 공유해 주세요.");
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ url: shareUrl });
+      } catch (error) {
+        if (error?.name === "AbortError") {
+          return;
+        }
+      }
+    }
+  });
+}
 
 function initFromQuery() {
   const params = new URLSearchParams(window.location.search);
