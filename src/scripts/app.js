@@ -9,6 +9,7 @@ const views = {
 };
 
 const startBtn = document.getElementById("start-btn");
+const startShareBtn = document.getElementById("start-share-btn");
 const restartBtn = document.getElementById("restart-btn");
 const optionButtons = Array.from(document.querySelectorAll(".btn-option"));
 
@@ -83,10 +84,7 @@ function setMetaTags({ title, description, image }) {
 }
 
 function getResultShareUrl(totalScore) {
-  const matched = getResultType(totalScore);
-  const url = new URL(matched.sharePage || "/", window.location.origin);
-  url.searchParams.set("s", String(totalScore));
-  return url.toString();
+  return getCommonShareUrl();
 }
 
 function updateQuizMidAd() {
@@ -113,6 +111,10 @@ function getShareLandingUrl() {
   const url = new URL(window.location.href);
   url.search = "";
   return url.toString();
+}
+
+function getCommonShareUrl() {
+  return new URL("/share/common.html", window.location.origin).toString();
 }
 
 function showFeedback(message, isError = false) {
@@ -269,7 +271,7 @@ optionButtons.forEach((button) => {
 
 shareBtn.addEventListener("click", async () => {
   const shareUrl = lastShareUrl || getShareLandingUrl();
-  await copyToClipboard(shareUrl, "결과 링크를 복사했어요. SNS나 채팅에 붙여넣어 공유해 주세요.");
+  await copyToClipboard(shareUrl, "공유 링크를 복사했어요. SNS나 채팅에 붙여넣어 공유해 주세요.");
 
   const sharePayload = {
     url: shareUrl
@@ -286,6 +288,23 @@ shareBtn.addEventListener("click", async () => {
     }
   }
 });
+
+if (startShareBtn) {
+  startShareBtn.addEventListener("click", async () => {
+    const shareUrl = getCommonShareUrl();
+    await copyToClipboard(shareUrl, "공유 링크를 복사했어요. SNS나 채팅에 붙여넣어 공유해 주세요.");
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ url: shareUrl });
+      } catch (error) {
+        if (error?.name === "AbortError") {
+          return;
+        }
+      }
+    }
+  });
+}
 
 function initFromQuery() {
   const params = new URLSearchParams(window.location.search);
