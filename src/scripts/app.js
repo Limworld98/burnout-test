@@ -83,7 +83,8 @@ function setMetaTags({ title, description, image }) {
 }
 
 function getResultShareUrl(totalScore) {
-  const url = new URL(window.location.href);
+  const matched = getResultType(totalScore);
+  const url = new URL(matched.sharePage || "/", window.location.origin);
   url.searchParams.set("s", String(totalScore));
   return url.toString();
 }
@@ -114,42 +115,8 @@ function getShareLandingUrl() {
   return url.toString();
 }
 
-function getImageExtension(imageUrl, mimeType) {
-  if (mimeType === "image/jpeg") {
-    return "jpg";
-  }
-
-  if (mimeType === "image/webp") {
-    return "webp";
-  }
-
-  if (mimeType === "image/gif") {
-    return "gif";
-  }
-
-  const pathname = new URL(imageUrl, window.location.origin).pathname;
-  const matchedExtension = pathname.match(/\.([a-zA-Z0-9]+)$/);
-  return matchedExtension?.[1] || "png";
-}
-
-async function createShareImageFile() {
-  if (!lastShareImageUrl || !lastResultScore) {
-    return null;
-  }
-
-  const response = await fetch(lastShareImageUrl, { cache: "no-cache" });
-
-  if (!response.ok) {
-    throw new Error("share-image-fetch-failed");
-  }
-
-  const blob = await response.blob();
-  const extension = getImageExtension(lastShareImageUrl, blob.type);
-
-  return new File([blob], `burnout-${lastResultScore}.${extension}`, {
-    type: blob.type || `image/${extension}`,
-    lastModified: Date.now()
-  });
+function composeShareMessage(shareText, shareUrl) {
+  return `${shareText} 👉 ${shareUrl}`;
 }
 
 function showFeedback(message, isError = false) {
@@ -306,24 +273,18 @@ optionButtons.forEach((button) => {
 
 shareBtn.addEventListener("click", async () => {
   const shareUrl = lastShareUrl || getShareLandingUrl();
+  const shareText = lastShareText || "내 번아웃 지수 테스트 해봤어 ㅋㅋ 너는 몇 %야?";
+  const shareMessage = composeShareMessage(shareText, shareUrl);
+
+  await copyToClipboard(shareMessage, "공유 문구를 복사했어요. 원하는 SNS에 붙여넣어 주세요.");
+
   const sharePayload = {
-    title: "지금 내 번아웃 지수는?",
-    text: lastShareText || "내 번아웃 지수 테스트 해봤어 ㅋㅋ 너는 몇 %야?",
+    text: shareText,
     url: shareUrl
   };
 
   if (navigator.share) {
     try {
-      const shareImageFile = await createShareImageFile().catch(() => null);
-
-      if (shareImageFile && navigator.canShare?.({ files: [shareImageFile] })) {
-        await navigator.share({
-          ...sharePayload,
-          files: [shareImageFile]
-        });
-        return;
-      }
-
       await navigator.share(sharePayload);
       return;
     } catch (error) {
@@ -332,8 +293,6 @@ shareBtn.addEventListener("click", async () => {
       }
     }
   }
-
-  await copyToClipboard(`${sharePayload.text}\n${sharePayload.url}`, "공유 기능을 열 수 없어 문구+링크를 복사했어요.");
 });
 
 function initFromQuery() {
