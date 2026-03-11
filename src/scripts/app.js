@@ -35,6 +35,12 @@ const metaTwitterTitle = document.getElementById("meta-twitter-title");
 const metaTwitterDescription = document.getElementById("meta-twitter-description");
 const metaTwitterImage = document.getElementById("meta-twitter-image");
 
+const LANDING_META = {
+  title: "지금 내 번아웃 지수는?",
+  description: "10문항 30초. 넌 몇 % 나옴?",
+  image: "/images/landing.png"
+};
+
 let currentQuestionIndex = 0;
 let answers = [];
 let lastShareText = "";
@@ -42,12 +48,6 @@ let lastShareUrl = window.location.href;
 let lastShareImageUrl = LANDING_META.image;
 let lastResultScore = null;
 let isAdvancing = false;
-
-const LANDING_META = {
-  title: "지금 내 번아웃 지수는?",
-  description: "10문항 30초. 넌 몇 % 나옴?",
-  image: "/images/landing.png"
-};
 
 function showView(name) {
   Object.values(views).forEach((view) => view.classList.remove("is-visible"));
