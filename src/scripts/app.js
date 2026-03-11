@@ -115,10 +115,6 @@ function getShareLandingUrl() {
   return url.toString();
 }
 
-function composeShareMessage(shareText, shareUrl) {
-  return `${shareText} 👉 ${shareUrl}`;
-}
-
 function showFeedback(message, isError = false) {
   feedback.textContent = message;
   feedback.classList.toggle("error", isError);
@@ -273,13 +269,9 @@ optionButtons.forEach((button) => {
 
 shareBtn.addEventListener("click", async () => {
   const shareUrl = lastShareUrl || getShareLandingUrl();
-  const shareText = lastShareText || "내 번아웃 지수 테스트 해봤어 ㅋㅋ 너는 몇 %야?";
-  const shareMessage = composeShareMessage(shareText, shareUrl);
-
-  await copyToClipboard(shareMessage, "공유 문구를 복사했어요. 원하는 SNS에 붙여넣어 주세요.");
+  await copyToClipboard(shareUrl, "결과 링크를 복사했어요. SNS나 채팅에 붙여넣어 공유해 주세요.");
 
   const sharePayload = {
-    text: shareText,
     url: shareUrl
   };
 
