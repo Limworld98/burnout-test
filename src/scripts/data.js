@@ -13,67 +13,67 @@ export const QUESTIONS = [
 
 export const RESULT_TYPES = [
   {
-    min: 10,
-    max: 16,
+    minPercent: 0,
+    maxPercent: 15,
     type: "새싹 직장인",
-    memeLine: "월요병? 아직은 가벼운 감기 수준 😌",
-    description: "지금 페이스 좋습니다. 주중 회복 루틴만 유지하면 꽤 오래 버틸 수 있어요.",
-    shareImage: "/images/results/1.png"
+    memeLine: "아직 회사의 쓴맛을 모르는 반짝 모드 🌱",
+    description: "신입의 패기를 보여주고 있어요. 열정적이고 회사일을 즐기며 에너지가 살아 있습니다.",
+    shareImage: "/images/results/step_1.png"
   },
   {
-    min: 17,
-    max: 22,
+    minPercent: 16,
+    maxPercent: 30,
     type: "카페인 단계",
-    memeLine: "아이스 아메리카노가 생명줄인 단계 ☕",
-    description: "피로가 슬슬 누적되는 구간입니다. 퇴근 후 회복 시간을 일정처럼 확보해보세요.",
-    shareImage: "/images/results/2.png"
+    memeLine: "커피 한잔이면 아직은 버틸 만한 직장인 ☕",
+    description: "커피 한잔으로 적당히 기분 좋게 일할 수 있어요. 피곤하지만 아직 다닐 만하고, 월요일이 싫어도 참을 수 있는 상태입니다.",
+    shareImage: "/images/results/step_2.png"
   },
   {
-    min: 23,
-    max: 28,
-    type: "현타 구간",
-    memeLine: "퇴근 후에도 머리에 업무 탭 12개 열림 🤯",
-    description: "동기와 의미감이 흔들리는 구간입니다. 오늘 한 일 1개라도 끝내는 감각을 되찾아보세요.",
-    shareImage: "/images/results/3.png"
+    minPercent: 31,
+    maxPercent: 45,
+    type: "의심 구간",
+    memeLine: "퇴사 글은 왜 이렇게 끝까지 읽게 될까 👀",
+    description: "가끔 퇴사를 상상해보지만 맡은 일은 능숙하게 해결할 수 있어요. \"나 여기 왜 다니지?\"를 생각해본 적 있고, 퇴사 글을 보면 괜히 끝까지 읽게 됩니다.",
+    shareImage: "/images/results/step_3.png"
   },
   {
-    min: 29,
-    max: 33,
+    minPercent: 46,
+    maxPercent: 57,
     type: "퇴사 반누름",
-    memeLine: "몸은 출근… 마음은 퇴근 예약됨 🫠",
-    description: "마음속 퇴사 버튼이 반쯤 눌렸습니다. 업무 경계와 회복 시간을 확실히 분리해보세요.",
-    shareImage: "/images/results/4.png"
+    memeLine: "퇴사 버튼 위에 손가락이 이미 올라가 있음 🫠",
+    description: "반쯤 퇴사를 고민하는 상태예요. 이직 공고를 저장해본 적이 있고 퇴근이 너무 기다려지며, 월요일이 유난히 버겁게 느껴집니다.",
+    shareImage: "/images/results/step_4.png"
   },
   {
-    min: 34,
-    max: 38,
+    minPercent: 58,
+    maxPercent: 74,
     type: "마음은 퇴사",
-    memeLine: "회의 시작 3분 만에 영혼이 로그아웃됨 🫥",
-    description: "지침이 꽤 깊게 쌓인 상태입니다. 지금은 버티기보다 부담을 줄이는 조정이 먼저예요.",
-    shareImage: "/images/results/5.png"
+    memeLine: "몸만 출근 중, 마음은 이미 퇴사 처리 완료 🫥",
+    description: "몸만 출근 중인 상태예요. 남은 휴가를 계산하는 게 취미가 되고, 회사 단톡방 알림만 떠도 스트레스를 받습니다.",
+    shareImage: "/images/results/step_5.png"
   },
   {
-    min: 39,
-    max: 42,
-    type: "퇴사 3초 전",
-    memeLine: "사직서 자동완성까지 손가락만 남았음 ✍️",
-    description: "번아웃 신호가 강합니다. 단기 휴식과 업무량 조정을 현실적으로 바로 시작하세요.",
-    shareImage: "/images/results/6.png"
-  },
-  {
-    min: 43,
-    max: 46,
+    minPercent: 75,
+    maxPercent: 84,
     type: "정서적 이혼",
-    memeLine: "회사와 감정 분리 완료, 월급만 연결 중 💸",
-    description: "정서적 소진이 매우 높은 상태입니다. 일정과 기대치를 즉시 낮추고 회복을 최우선으로 두세요.",
-    shareImage: "/images/results/7.png"
+    memeLine: "애정은 로그아웃, 급여 알림만 로그인 상태 💸",
+    description: "업무에 감정이 실리지 않고 회사에 대한 애정이 거의 없는 상태예요. 최소한의 에너지로만 버티고 있습니다.",
+    shareImage: "/images/results/step_6.png"
   },
   {
-    min: 47,
-    max: 50,
-    type: "퇴사 엔딩",
-    memeLine: "출근길 BGM이 자연스럽게 엔딩곡 🎬",
-    description: "한계에 가까운 상태입니다. 충분한 휴식과 주변의 실질적 지원을 먼저 확보하세요.",
-    shareImage: "/images/results/8.png"
+    minPercent: 85,
+    maxPercent: 93,
+    type: "퇴사 3초 전",
+    memeLine: "사직서 제출 장면을 머릿속에서 N회차 재생 중 ⏳",
+    description: "퇴사 후 무엇을 할지 자주 상상하고, 사직서를 내는 모습을 구체적으로 떠올려보는 단계입니다.",
+    shareImage: "/images/results/step_7.png"
+  },
+  {
+    minPercent: 94,
+    maxPercent: 100,
+    type: "퇴사 엔딩 확정형",
+    memeLine: "퇴사 후 계획표와 프로필 업데이트까지 끝난 상태 ✅",
+    description: "퇴사 후 계획이 이미 정리되어 있고 LinkedIn 프로필 업데이트까지 마친 단계입니다. 실행만 남았어요.",
+    shareImage: "/images/results/step_8.png"
   }
 ];
