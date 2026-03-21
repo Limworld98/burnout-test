@@ -18,7 +18,8 @@ export const RESULT_TYPES = [
     type: "새싹 직장인",
     memeLine: "아직 회사의 쓴맛을 모르는 반짝 모드 🌱",
     description: "신입의 패기를 보여주고 있어요. 열정적이고 회사일을 즐기며 에너지가 살아 있습니다.",
-    shareImage: "/images/results/step_1.png"
+    shareImage: "/images/results/step_1.png",
+    sharePage: "/share/1.html"
   },
   {
     minPercent: 16,
@@ -26,7 +27,8 @@ export const RESULT_TYPES = [
     type: "카페인 단계",
     memeLine: "커피 한잔이면 아직은 버틸 만한 직장인 ☕",
     description: "커피 한잔으로 적당히 기분 좋게 일할 수 있어요. 피곤하지만 아직 다닐 만하고, 월요일이 싫어도 참을 수 있는 상태입니다.",
-    shareImage: "/images/results/step_2.png"
+    shareImage: "/images/results/step_2.png",
+    sharePage: "/share/2.html"
   },
   {
     minPercent: 31,
@@ -34,7 +36,8 @@ export const RESULT_TYPES = [
     type: "의심 구간",
     memeLine: "퇴사 글은 왜 이렇게 끝까지 읽게 될까 👀",
     description: "가끔 퇴사를 상상해보지만 맡은 일은 능숙하게 해결할 수 있어요. \"나 여기 왜 다니지?\"를 생각해본 적 있고, 퇴사 글을 보면 괜히 끝까지 읽게 됩니다.",
-    shareImage: "/images/results/step_3.png"
+    shareImage: "/images/results/step_3.png",
+    sharePage: "/share/3.html"
   },
   {
     minPercent: 46,
@@ -42,7 +45,8 @@ export const RESULT_TYPES = [
     type: "퇴사 반누름",
     memeLine: "퇴사 버튼 위에 손가락이 이미 올라가 있음 🫠",
     description: "반쯤 퇴사를 고민하는 상태예요. 이직 공고를 저장해본 적이 있고 퇴근이 너무 기다려지며, 월요일이 유난히 버겁게 느껴집니다.",
-    shareImage: "/images/results/step_4.png"
+    shareImage: "/images/results/step_4.png",
+    sharePage: "/share/4.html"
   },
   {
     minPercent: 58,
@@ -50,7 +54,8 @@ export const RESULT_TYPES = [
     type: "마음은 퇴사",
     memeLine: "몸만 출근 중, 마음은 이미 퇴사 처리 완료 🫥",
     description: "몸만 출근 중인 상태예요. 남은 휴가를 계산하는 게 취미가 되고, 회사 단톡방 알림만 떠도 스트레스를 받습니다.",
-    shareImage: "/images/results/step_5.png"
+    shareImage: "/images/results/step_5.png",
+    sharePage: "/share/5.html"
   },
   {
     minPercent: 75,
@@ -58,7 +63,8 @@ export const RESULT_TYPES = [
     type: "정서적 이혼",
     memeLine: "애정은 로그아웃, 급여 알림만 로그인 상태 💸",
     description: "업무에 감정이 실리지 않고 회사에 대한 애정이 거의 없는 상태예요. 최소한의 에너지로만 버티고 있습니다.",
-    shareImage: "/images/results/step_6.png"
+    shareImage: "/images/results/step_6.png",
+    sharePage: "/share/6.html"
   },
   {
     minPercent: 85,
@@ -66,7 +72,8 @@ export const RESULT_TYPES = [
     type: "퇴사 3초 전",
     memeLine: "사직서 제출 장면을 머릿속에서 N회차 재생 중 ⏳",
     description: "퇴사 후 무엇을 할지 자주 상상하고, 사직서를 내는 모습을 구체적으로 떠올려보는 단계입니다.",
-    shareImage: "/images/results/step_7.png"
+    shareImage: "/images/results/step_7.png",
+    sharePage: "/share/7.html"
   },
   {
     minPercent: 94,
@@ -74,6 +81,7 @@ export const RESULT_TYPES = [
     type: "퇴사 엔딩 확정형",
     memeLine: "퇴사 후 계획표와 프로필 업데이트까지 끝난 상태 ✅",
     description: "퇴사 후 계획이 이미 정리되어 있고 LinkedIn 프로필 업데이트까지 마친 단계입니다. 실행만 남았어요.",
-    shareImage: "/images/results/step_8.png"
+    shareImage: "/images/results/step_8.png",
+    sharePage: "/share/8.html"
   }
 ];

@@ -84,7 +84,10 @@ function setMetaTags({ title, description, image }) {
 }
 
 function getResultShareUrl(totalScore) {
-  return getCommonShareUrl();
+  const matched = getResultType(totalScore);
+  const url = new URL(matched.sharePage || "/share/common.html", window.location.origin);
+  url.searchParams.set("s", String(totalScore));
+  return url.toString();
 }
 
 function updateQuizMidAd() {
