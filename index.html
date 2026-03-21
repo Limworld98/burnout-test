@@ -32,7 +32,7 @@
     <main class="app">
       <header class="hero">
         <h1>지금 내 번아웃 지수는?</h1>
-        <p>출근만 했는데 체력바 -30%? 웃프게 확인해보는 번아웃 테스트</p>
+        <p>출근만 했는데 체력바 -30%?<br />바로 확인해보는 번아웃 테스트</p>
       </header>
 
       <section id="start-view" class="card view is-visible" aria-labelledby="start-title">
@@ -44,6 +44,9 @@
         />
         <p class="help-text">직장인 공감 10문항, 30초면 끝나요.</p>
         <button id="start-btn" class="btn btn-primary" type="button">🔥 나 몇 %인지 보러가기</button>
+        <div class="share-actions start-share-actions">
+          <button id="start-share-btn" class="btn btn-secondary" type="button">공유하기</button>
+        </div>
       </section>
 
       <section id="quiz-view" class="card view" aria-labelledby="quiz-title" aria-live="polite">
@@ -56,10 +59,6 @@
 
         <h2 id="quiz-title" class="section-title">질문</h2>
         <p id="question-text" class="question-text"></p>
-
-        <div id="quiz-mid-ad" class="ad-box ad-quiz-mid" role="complementary" aria-label="광고 영역">
-          광고 영역 (질문 중반)
-        </div>
 
         <div class="score-options" role="radiogroup" aria-label="점수 선택">
           <button class="btn btn-option" type="button" data-score="1">1 · 매우 아니다</button>
@@ -82,10 +81,6 @@
       </section>
 
       <section id="result-view" class="card view" aria-labelledby="result-title">
-        <div class="ad-box" role="complementary" aria-label="광고 영역">
-          광고 영역 (결과 상단)
-        </div>
-
         <h2 id="result-title" class="section-title">결과</h2>
         <img id="result-image" class="result-image" src="" alt="결과 이미지" />
         <p class="result-index-label">번아웃 지수</p>
@@ -100,10 +95,6 @@
         </div>
 
         <button id="restart-btn" class="btn btn-primary" type="button">다시 테스트하기</button>
-
-        <div class="ad-box" role="complementary" aria-label="광고 영역">
-          광고 영역 (결과 하단)
-        </div>
       </section>
 
       <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
