@@ -16,7 +16,6 @@ const optionButtons = Array.from(document.querySelectorAll(".btn-option"));
 const progressText = document.getElementById("progress-text");
 const progressBar = document.getElementById("progress-bar");
 const questionText = document.getElementById("question-text");
-const quizMidAd = document.getElementById("quiz-mid-ad");
 const landingImage = document.getElementById("landing-image");
 const loadingBarFill = document.getElementById("loading-bar-fill");
 
@@ -90,11 +89,6 @@ function getResultShareUrl(totalScore) {
   return url.toString();
 }
 
-function updateQuizMidAd() {
-  const showAd = currentQuestionIndex >= 3 && currentQuestionIndex <= 4;
-  quizMidAd.classList.toggle("is-visible", showAd);
-}
-
 function renderQuestion() {
   const current = currentQuestionIndex + 1;
   const total = QUESTIONS.length;
@@ -103,7 +97,6 @@ function renderQuestion() {
   progressText.textContent = `${current} / ${total}`;
   progressBar.style.width = `${Math.max(10, progress)}%`;
   questionText.textContent = QUESTIONS[currentQuestionIndex];
-  updateQuizMidAd();
 }
 
 function getShareText(indexPercent, typeName) {
