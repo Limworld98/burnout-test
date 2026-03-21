@@ -18,10 +18,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <script>
       (function () {
-        var params = new URLSearchParams(window.location.search);
-        var score = params.get("s");
-        var target = score ? "/?s=" + encodeURIComponent(score) : "/";
-        window.location.replace(target);
+        window.location.replace("/");
       })();
     </script>
   </head>

@@ -84,9 +84,7 @@ function setMetaTags({ title, description, image }) {
 
 function getResultShareUrl(totalScore) {
   const matched = getResultType(totalScore);
-  const url = new URL(matched.sharePage || "/share/common.html", window.location.origin);
-  url.searchParams.set("s", String(totalScore));
-  return url.toString();
+  return new URL(matched.sharePage || "/share/common.html", window.location.origin).toString();
 }
 
 function renderQuestion() {
